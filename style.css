@@ -313,7 +313,7 @@ body {
 }
 
 #page2.show-bg::before {
-    opacity: 0.2;
+    opacity: 0.4; /* 调整透明度 */
     filter: blur(5px);
 }
 
