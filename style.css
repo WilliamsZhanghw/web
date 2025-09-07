@@ -1,0 +1,658 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+body {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #fad0c4 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    color: #44313b; /* 更新为深梅紫色，增加可读性和浪漫感 */
+}
+
+.page .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 默认垂直居中 */
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#page1 .content {
+    font-family: 'ZCOOL KuaiLe', cursive; /* 统一字体 */
+    justify-content: flex-start; /* 【关键】改为顶部对齐 */
+    padding-top: 20vh; /* 增加顶部间距，使其在视觉上更舒适 */
+}
+
+#page3 .content {
+    justify-content: flex-start; /* 改为顶部对齐，以获得更稳定的动画效果 */
+    padding-top: 15vh; /* 增加顶部间距，使其在视觉上更舒适 */
+}
+
+/* 飘落花瓣背景 */
+.petals-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 游泳的小鱼背景 */
+.fish-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.fish {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    left: 0;
+    animation: swim linear infinite;
+}
+
+/* 小鱼游泳动画 - 从右到左 */
+@keyframes swim {
+    0% {
+        left: 100vw;
+        opacity: 0;
+    }
+    5% {
+        opacity: 0.8;
+    }
+    95% {
+        opacity: 0.8;
+    }
+    100% {
+        left: -100px;
+        opacity: 0;
+    }
+}
+
+/* 小鱼游泳动画 - 从左到右 */
+@keyframes swimReverse {
+    0% {
+        left: -100px;
+        opacity: 0;
+        transform: scaleX(-1);
+    }
+    5% {
+        opacity: 0.8;
+    }
+    95% {
+        opacity: 0.8;
+    }
+    100% {
+        left: 100vw;
+        opacity: 0;
+        transform: scaleX(-1);
+    }
+}
+
+/* 小鱼上下游动 - 更自然的摆动 */
+@keyframes swimVertical {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scaleX(1);
+    }
+    20% {
+        transform: translateY(-20px) rotate(-5deg) scaleX(1);
+    }
+    40% {
+        transform: translateY(15px) rotate(3deg) scaleX(1);
+    }
+    60% {
+        transform: translateY(-10px) rotate(-2deg) scaleX(1);
+    }
+    80% {
+        transform: translateY(18px) rotate(4deg) scaleX(1);
+    }
+}
+
+/* 反向游泳的鱼儿的垂直摆动 */
+@keyframes swimVerticalReverse {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scaleX(-1);
+    }
+    20% {
+        transform: translateY(-20px) rotate(5deg) scaleX(-1);
+    }
+    40% {
+        transform: translateY(15px) rotate(-3deg) scaleX(-1);
+    }
+    60% {
+        transform: translateY(-10px) rotate(2deg) scaleX(-1);
+    }
+    80% {
+        transform: translateY(18px) rotate(-4deg) scaleX(-1);
+    }
+}
+
+.petal {
+    position: absolute;
+    color: #ffb3d9;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 页面容器 */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 3;
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.page.prev {
+    transform: translateX(-100%);
+}
+
+.content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+/* 第一页 - 诗歌样式 */
+.poem-container {
+    background: transparent;
+    padding: 60px 40px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.poem-title {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.poem-content {
+    position: relative;
+    z-index: 1;
+}
+
+.poem-line {
+    font-size: 1.4em;
+    line-height: 2;
+    margin: 15px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.rabbit-decoration {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    font-size: 2em;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 第二页 - 文本样式 */
+.text-container {
+    background: transparent;
+    padding: 40px;
+    margin-bottom: 40px;
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+/* 隐藏 WebKit 浏览器的滚动条 */
+.text-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 第二页背景图片轮播 */
+#page2 {
+    position: relative;
+}
+
+#page2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(20px);
+    opacity: 0;
+    z-index: 0; /* 确保背景在文字之下 */
+    transition: all 2s ease-in-out;
+}
+
+#page2.show-bg::before {
+    opacity: 0.2;
+    filter: blur(5px);
+}
+
+#page2.blur-bg::before {
+    filter: blur(20px);
+    opacity: 0.1;
+}
+
+.quote-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.quote {
+    font-size: 1.3em;
+    font-style: italic;
+    color: #ff6b9d;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.reflection-text, .philosophy-text, .metaphor-text, .conclusion-text {
+    margin: 25px 0;
+    padding: 20px 0;
+}
+
+.text-container p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin: 12px 0;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 12px rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.highlight {
+    color: #ff6b9d !important;
+    font-weight: bold;
+    font-size: 1.2em !important;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.final-hope {
+    color: #ff9a9e !important;
+    font-weight: bold;
+    font-size: 1.2em !important;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.rabbit-thoughts {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 1.5em;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 第三页 - 表白样式 */
+.confession-container {
+    background: transparent;
+    padding: 50px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+
+.confession-text {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+}
+
+.confession-text p {
+    font-size: 1.3em;
+    line-height: 1.8;
+    margin: 15px 0;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-confession {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.big-text {
+    font-size: 1.5em !important;
+    color: #ffeb3b;
+    animation-delay: 2s !important;
+}
+
+.name-highlight,
+.love-declaration {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.love-declaration {
+    font-size: 3em;
+    font-weight: bold;
+    color: #e91e63;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 105, 180, 0.5); /* 更新文字阴影 */
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+.name-highlight {
+    font-size: 3.5em;
+    font-weight: bold;
+    color: #ff5252;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); /* 更新文字阴影 */
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartbeat {
+    0% { opacity: 0; transform: scale(0.8); }
+    14% { opacity: 1; transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.rabbit-celebration {
+    margin: 30px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.rabbit-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.rabbit {
+    font-size: 2em;
+    animation: bounce 1s infinite;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-delay: 3.5s;
+}
+
+.bounce-delay-1 { animation-delay: 3.7s; }
+.bounce-delay-2 { animation-delay: 3.9s; }
+.bounce-delay-3 { animation-delay: 4.1s; }
+.bounce-delay-4 { animation-delay: 4.3s; }
+
+.final-message {
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.final-message p {
+    font-size: 1.2em;
+    color: #ff9a9e;
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* 按钮样式 */
+.next-btn,
+.restart-btn {
+    font-family: 'ZCOOL KuaiLe', cursive; /* 与正文字体统一 */
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 154, 158, 0.4);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 不同页面按钮的出现时机 */
+#page1 .next-btn {
+    animation-delay: 3s;
+}
+
+#page2 .next-btn {
+    z-index: 11;
+    position: relative;
+}
+
+#page3 .restart-btn {
+    animation-delay: 5s;
+}
+
+.next-btn:hover, .restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 154, 158, 0.6);
+    background: linear-gradient(45deg, #fecfef, #ff9a9e);
+}
+
+.next-btn:active, .restart-btn:active {
+    transform: translateY(0);
+}
+
+.heart {
+    font-size: 1.2em;
+    animation: heartPulse 1.5s infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        max-width: 90%;
+    }
+    
+    .poem-container, .text-container, .confession-container {
+        padding: 30px 20px;
+        margin-bottom: 30px;
+    }
+    
+    .poem-title {
+        font-size: 2em;
+    }
+    
+    .poem-line {
+        font-size: 1.2em;
+    }
+    
+    .text-container {
+        max-height: 60vh;
+    }
+    
+    .text-container p {
+        font-size: 1em;
+    }
+    
+    .name-highlight {
+        font-size: 2.5em;
+    }
+    
+    .love-declaration {
+        font-size: 2em;
+    }
+    
+    .rabbit-group {
+        gap: 15px;
+    }
+    
+    .rabbit {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .poem-container, .text-container, .confession-container {
+        padding: 20px 15px;
+    }
+    
+    .poem-title {
+        font-size: 1.8em;
+    }
+    
+    .poem-line {
+        font-size: 1.1em;
+    }
+    
+    .text-container p {
+        font-size: 0.95em;
+    }
+    
+    .name-highlight {
+        font-size: 2em;
+    }
+    
+    .love-declaration {
+        font-size: 1.8em;
+    }
+}
+
+.poem-line,
+.text-container p,
+.confession-text p,
+.quote {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* 更新文字阴影为浅色，以搭配深色字体 */
+}
+
+.main-confession {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+

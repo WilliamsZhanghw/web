@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给FeiFei的专属网站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="background-music" loop></audio>
+    
+    <!-- 飘落的花瓣背景 -->
+    <div class="petals-container"></div>
+    
+    <!-- 游泳的小鱼背景 -->
+    <div class="fish-container"></div>
+    
+    <!-- 第一页：诗歌 -->
+    <div class="page active" id="page1">
+        <div class="content">
+            <div class="text-container">
+                <h1 class="poem-title">《卿》</h1>
+                <p class="poem-line">十载孤身过，今朝遇卿芳。</p>
+                <p class="poem-line">花开虽有谢，愿与卿同赏。</p>
+                <p class="poem-line">相逢本不易，相伴即安常。</p>
+                <p class="poem-line">莫问终何处，相知胜繁芳。</p>
+                <p class="poem-line">此心倾一片，唯卿托韶长。</p>
+            </div>
+            <button class="next-btn" onclick="nextPage()">跟我来</button>
+        </div>
+    </div>
+
+    <!-- 第二页：感悟 -->
+    <div class="page" id="page2">
+        <div class="content">
+            <div class="text-container">
+                <div class="text-content">
+                    <p class="quote">“如果你特别爱一个人，但又不确定是否有结果，你会选择过程、追求结果，还是转身离开”</p>
+                </div>
+                
+                <div class="reflection-text">
+                    <p>这个问题让我想了很久，我觉得我会...选择...过程</p>
+                    <p>既然无法左右结果，那就顺从自己的内心去享受过程</p>
+                    <p>毕竟，能够遇见一个自己喜欢的人已经很不容易了</p>
+                    <p>能够彼此陪伴过一段时光，更是一种幸运</p>
+                    <p>所以最后能否在一起，似乎真的没有那么重要</p>
+                </div>
+
+                <div class="philosophy-text">
+                    <p>可话又说回来，所谓结果到底是什么呢</p>
+                    <p>结婚算吗？可也有人会离婚</p>
+                    <p>白头偕老算吗？也总会有人先离开</p>
+                    <p class="highlight">也许，相爱本身，就是最美的结果</p>
+                </div>
+
+                <div class="metaphor-text">
+                    <p>那明知道分开后会难过，该怎么办呢</p>
+                    <p>想想看，花明明知道自己会凋谢，难道就不开吗</p>
+                    <p>读书难道只看最后几页吗</p>
+                    <p>也许，真正打动人的，是中间的点点滴滴——那些让你哭、让你笑、让你成长的过程</p>
+                </div>
+
+                <div class="conclusion-text">
+                    <p>人生就是这样</p>
+                    <p>既然遇见了，就好好去体验</p>
+                    <p>在有限的时间里，无限去爱你想要爱的人</p>
+                    <p>尽人事，听天命</p>
+                    <p class="final-hope">万一，这一次，就是一辈子呢</p>
+                </div>
+
+                <div class="rabbit-thoughts">🐰💭</div>
+            </div>
+            <button class="next-btn" onclick="nextPage()">
+                <span>我想说...</span>
+                <div class="heart">💝</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- 第三页：表白 -->
+    <div class="page" id="page3">
+        <div class="content">
+            <div class="confession-container">
+                <div class="confession-text">
+                    <p class="opening">所以，我想开了。</p>
+                    <p>我不想再单身了。</p>
+                    <p>我要直面自己的内心感受——</p>
+                    <div class="main-confession">
+                        <p class="big-text">我想大声对你说：</p>
+                        <h2 class="name-highlight">FeiFei！</h2>
+                        <h1 class="love-declaration">我喜欢你！！！</h1>
+                    </div>
+                </div>
+                
+                <div class="rabbit-celebration">
+                    <div class="rabbit-group">
+                        <span class="rabbit bounce">🐰</span>
+                        <span class="rabbit bounce-delay-1">💕</span>
+                        <span class="rabbit bounce-delay-2">🐰</span>
+                        <span class="rabbit bounce-delay-3">💖</span>
+                        <span class="rabbit bounce-delay-4">🐰</span>
+                    </div>
+                </div>
+
+                <div class="final-message">
+                    <p>愿我们如兔子般纯真可爱，</p>
+                    <p>在彼此的世界里快乐蹦跳~ 🐰💕</p>
+                </div>
+            </div>
+            
+            <button class="restart-btn" onclick="restart()">
+                <span>重温一遍</span>
+                <div class="heart">💌</div>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
