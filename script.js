@@ -589,12 +589,8 @@ function handleSwipe() {
     const horizontalDiff = touchStartX - touchEndX;
     const verticalDiff = touchStartY - touchEndY;
     
-    // 检查是否在文本容器内开始触摸
-    const textContainer = document.querySelector('.text-container');
-    const isInTextContainer = textContainer && textContainer.contains(touchStartElement);
-    
-    // 如果在第二页的文本容器内，且主要是垂直滑动，则不切换页面
-    if (currentPage === 2 && isInTextContainer && Math.abs(verticalDiff) > Math.abs(horizontalDiff)) {
+    // 如果在第二页，则完全禁用滑动翻页
+    if (currentPage === 2) {
         return;
     }
     
@@ -616,6 +612,11 @@ function handleSwipe() {
 let isScrolling = false;
 document.addEventListener('wheel', function(event) {
     if (isScrolling) return;
+    
+    // 如果在第二页，则完全禁用滚轮翻页
+    if (currentPage === 2) {
+        return;
+    }
     
     // 检查是否在可滚动的文本容器内
     const textContainer = document.querySelector('.text-container');
