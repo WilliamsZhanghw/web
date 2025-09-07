@@ -313,7 +313,7 @@ body {
 }
 
 #page2.show-bg::before {
-    opacity: 0.4; /* 调整透明度 */
+    opacity: 0.3; /* 调整透明度 */
     filter: blur(5px);
 }
 
@@ -328,7 +328,7 @@ body {
 }
 
 .quote {
-    font-size: calc(1.3em + 2px); /* 增大字号 */
+    font-size: calc(1.3em + 1px); /* 调整字号 */
     font-style: italic;
     color: #ff6b9d;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.5);
@@ -343,7 +343,7 @@ body {
 }
 
 .text-container p {
-    font-size: calc(1.1em + 2px); /* 增大字号 */
+    font-size: calc(1.1em + 1px); /* 调整字号 */
     line-height: 1.8;
     margin: 12px 0;
     color: #fff; /* 恢复为白色 */
@@ -360,14 +360,14 @@ body {
 .highlight {
     color: #ff6b9d !important;
     font-weight: bold;
-    font-size: calc(1.2em + 2px) !important; /* 增大字号 */
+    font-size: calc(1.2em + 1px) !important; /* 调整字号 */
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .final-hope {
     color: #ff9a9e !important;
     font-weight: bold;
-    font-size: calc(1.2em + 2px) !important; /* 增大字号 */
+    font-size: calc(1.2em + 1px) !important; /* 调整字号 */
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
